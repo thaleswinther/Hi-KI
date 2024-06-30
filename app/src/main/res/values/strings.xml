@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">HiKI</string>
+    <string name="type_message_here">Escreva sua mensagem...</string>
+    <string name="send_prompt">Enviar mensagem</string>
+    <string name="email">Email</string>
+    <string name="back">Voltar</string>
+    <string name="user_avatar">Avatar do usuário</string>
+    <string name="menu">Menu</string>
+    <string name="error_email_empty">Email não pode ser vazio</string>
+    <string name="welcome_message">Aprenda a falar alemão com a ajuda da Inteligência Artificial</string>
+    <string name="welcome">Bem-vindo</string>
+    <string name="login">Entrar</string>
+    <string name="create">Criar</string>
+    <string name="register_message">Crie sua conta</string>
+    <string name="username">Username</string>
+    <string name="password">Senha</string>
+    <string name="password_forgot">esqueci minha senha</string>
+    <string name="or">ou</string>
+    <string name="register_account">Ainda não tem uma conta?</string>
+    <string name="login_account">Já tem uma conta?</string>
+    <string name="social_media_login">Entre com</string>
+    <string name="create_account">crie aqui</string>
+    <string name="click_here">Entre aqui</string>
+    <string name="invalid_email">Email inválido</string>
+    <string name="invalid_password">Senha inválida</string>
+    <string name="user_already_exists">Usuário já cadastrado</string>
+    <string name="all_fields_required">Preencha todos os campos</string>
+    <string name="next">Avançar</string>
+    <string name="logo_description">logo HiKI</string>
+    <string name="facebook_description">Logo do FacebookI</string>
+    <string name="google_description">Logo da Google</string>
+    <string name="step_one_description">Passo 1</string>
+</resources>
