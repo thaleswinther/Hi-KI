@@ -185,12 +185,6 @@ fun ChatScreen(
 
 @Composable
 fun ModelChatItem(response: String) {
-    val maxCharacters = 270
-    val displayResponse = if (response.length > maxCharacters) {
-        "${response.take(maxCharacters)}..."
-    } else {
-        response
-    }
     Column(
         modifier = Modifier.padding(end = 100.dp, bottom = 16.dp),
     ) {
@@ -200,7 +194,7 @@ fun ModelChatItem(response: String) {
                 .clip(RoundedCornerShape(12.dp))
                 .background(Color(primary))
                 .padding(16.dp),
-            text = displayResponse,
+            text = response,
             fontSize = 17.sp,
             color = MaterialTheme.colorScheme.onPrimary,
         )
@@ -240,13 +234,6 @@ fun TopBar(onBackPress: () -> Unit) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Row {
-                /*IconButton(onClick = { print("onBackClick()") }) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        tint = Color(0xFFFFF7DF),
-                        contentDescription = "Back"
-                    )
-                }*/
                 IconButton(onClick = {  onBackPress() }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_arrow_back),

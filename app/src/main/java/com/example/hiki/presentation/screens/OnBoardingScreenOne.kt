@@ -30,7 +30,7 @@ import com.example.hiki.R
 import com.example.hiki.navigation.ScreenDestinations
 
 @Composable
-fun WelcomeScreen(navController: NavController) {
+fun OnBoardingScreenOne(navController: NavController) {
     BoxWithConstraints(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -92,7 +92,7 @@ fun VerticalLayout(navController: NavController) {
             .size(width = 128.dp, height = 40.dp),
         onClick = {
             navController.navigate(ScreenDestinations.ChatScreen.route) {
-                popUpTo(ScreenDestinations.WelcomeScreen.route) {
+                popUpTo(ScreenDestinations.OnBoardingScreenOne.route) {
                     inclusive = false
                 }
             }
@@ -149,7 +149,7 @@ fun HorizontalLayout(navController: NavController) {
                 .size(width = 128.dp, height = 40.dp),
             onClick = {
                 navController.navigate(ScreenDestinations.ChatScreen.route) {
-                    popUpTo(ScreenDestinations.WelcomeScreen.route) {
+                    popUpTo(ScreenDestinations.OnBoardingScreenOne.route) {
                         inclusive = false
                     }
                 }
@@ -175,6 +175,6 @@ fun HorizontalLayout(navController: NavController) {
 
 @Preview
 @Composable
-fun WelcomeScreenPreview() {
-    WelcomeScreen(navController = rememberNavController())
+fun OnBoardingScreenOnePreview() {
+    OnBoardingScreenOne(navController = rememberNavController())
 }

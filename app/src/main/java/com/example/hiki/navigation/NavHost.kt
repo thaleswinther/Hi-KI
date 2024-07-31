@@ -47,8 +47,8 @@ import androidx.navigation.compose.NavHost
 import com.example.hiki.presentation.screens.ChatScreen
 //import com.example.hiki.presentation.screens.HomeScreen
 import com.example.hiki.presentation.screens.LoginScreen
+import com.example.hiki.presentation.screens.OnBoardingScreenOne
 import com.example.hiki.presentation.screens.RegisterScreen
-import com.example.hiki.presentation.screens.WelcomeScreen
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -56,7 +56,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 fun MainAnimationNavHost(
     uriState: MutableStateFlow<String>,
     navController: NavHostController,
-    startDestination: String = ScreenDestinations.RegisterScreen.route,
+    startDestination: String = ScreenDestinations.LoginScreen.route,
 ) {
     NavHost(
         navController = navController,
@@ -65,7 +65,7 @@ fun MainAnimationNavHost(
         screen(ScreenDestinations.LoginScreen.route) {
             LoginScreen(
                 onLoginSuccess = {
-                    navController.navigate(ScreenDestinations.WelcomeScreen.route) {
+                    navController.navigate(ScreenDestinations.OnBoardingScreenOne.route) {
                         popUpTo(ScreenDestinations.LoginScreen.route) { inclusive = true }
                     }
                 },
@@ -86,13 +86,13 @@ fun MainAnimationNavHost(
                 }
             )
         }
-        screen(ScreenDestinations.WelcomeScreen.route) {
-            WelcomeScreen(navController = navController)
+        screen(ScreenDestinations.OnBoardingScreenOne.route) {
+            OnBoardingScreenOne(navController = navController)
         }
         screen(ScreenDestinations.ChatScreen.route) {
             ChatScreen(
                 onBackPress = {
-                    navController.navigateTo(ScreenDestinations.WelcomeScreen.route)
+                    navController.navigateTo(ScreenDestinations.OnBoardingScreenOne.route)
                 },
                 uriState = uriState,
             )
