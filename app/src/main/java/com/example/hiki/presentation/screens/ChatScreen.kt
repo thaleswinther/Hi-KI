@@ -62,9 +62,6 @@ fun ChatScreen(
 ) {
     val chatViewModel = viewModel<ChatViewModel>()
     val chatState = chatViewModel.chatState.collectAsState().value
-
-
-    // Track loading state
     val isLoading = chatState.showIndicator
 
     Column(
