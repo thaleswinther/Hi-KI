@@ -65,9 +65,8 @@ fun LoginScreen(
     val loginState = loginViewModel.loginState.collectAsState().value
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    BoxWithConstraints (
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    BoxWithConstraints(
+        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
         if (maxWidth < maxHeight) {
             // Layout para orientação vertical
@@ -127,15 +126,16 @@ fun VerticalLayout(
         TextField(
             value = loginState.email,
             onValueChange = { loginViewModel.onEvent(LoginUiEvent.UpdateEmail(it)) },
-            placeholder = { Text(
-                stringResource(id = R.string.email),
-                style = TextStyle(fontSize =  MaterialTheme.typography.bodySmall.fontSize)
-            ) },
+            placeholder = {
+                Text(
+                    stringResource(id = R.string.email),
+                    style = TextStyle(fontSize = MaterialTheme.typography.bodySmall.fontSize)
+                )
+            },
             singleLine = true,
-            textStyle = TextStyle(fontSize =  MaterialTheme.typography.bodySmall.fontSize),
+            textStyle = TextStyle(fontSize = MaterialTheme.typography.bodySmall.fontSize),
             keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Next
+                keyboardType = KeyboardType.Text, imeAction = ImeAction.Next
             ),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -159,22 +159,21 @@ fun VerticalLayout(
         TextField(
             value = loginState.password,
             onValueChange = { loginViewModel.onEvent(LoginUiEvent.UpdatePassword(it)) },
-            placeholder = { Text(
-                stringResource(id = R.string.password),
-                style = TextStyle(fontSize =  MaterialTheme.typography.bodySmall.fontSize)
-            ) },
+            placeholder = {
+                Text(
+                    stringResource(id = R.string.password),
+                    style = TextStyle(fontSize = MaterialTheme.typography.bodySmall.fontSize)
+                )
+            },
             singleLine = true,
-            textStyle = TextStyle(fontSize =  MaterialTheme.typography.bodySmall.fontSize),
+            textStyle = TextStyle(fontSize = MaterialTheme.typography.bodySmall.fontSize),
             keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Password,
-                imeAction = ImeAction.Done
+                keyboardType = KeyboardType.Password, imeAction = ImeAction.Done
             ),
-            keyboardActions = KeyboardActions(
-                onDone = {
-                    loginViewModel.onEvent(LoginUiEvent.Login)
-                    keyboardController?.hide()
-                }
-            ),
+            keyboardActions = KeyboardActions(onDone = {
+                loginViewModel.onEvent(LoginUiEvent.Login)
+                keyboardController?.hide()
+            }),
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -198,9 +197,11 @@ fun VerticalLayout(
                     "Invalid email" -> {
                         stringResource(id = R.string.invalid_email)
                     }
+
                     "Invalid password" -> {
                         stringResource(id = R.string.invalid_password)
                     }
+
                     else -> {
                         loginState.error
                     }
@@ -241,8 +242,7 @@ fun VerticalLayout(
         Spacer(modifier = Modifier.height(16.dp))
 
         Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()
+            verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()
         ) {
             HorizontalDivider(
                 modifier = Modifier
@@ -269,34 +269,30 @@ fun VerticalLayout(
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.facebook_logo),
+                Image(painter = painterResource(id = R.drawable.facebook_logo),
                     contentDescription = stringResource(id = R.string.facebook_description),
                     modifier = Modifier
                         .size(width = 140.dp, height = 64.dp)
-                        .clickable { /* Handle Facebook login */ }
-                )
+                        .clickable { /* Handle Facebook login */ })
                 Text("Facebook", color = Color(black))
             }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    painter = painterResource(id = R.drawable.google_logo),
+                Image(painter = painterResource(id = R.drawable.google_logo),
                     contentDescription = stringResource(id = R.string.google_description),
                     modifier = Modifier
                         .size(width = 140.dp, height = 64.dp)
-                        .clickable { /* Handle Google login */ }
-                )
+                        .clickable { /* Handle Google login */ })
                 Text("Google", color = Color(black))
             }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Row (
+        Row(
             verticalAlignment = Alignment.CenterVertically,
-        ){
+        ) {
             Text(stringResource(R.string.register_account), color = Color(black))
             Spacer(modifier = Modifier.width(4.dp))
             Text(
@@ -305,8 +301,7 @@ fun VerticalLayout(
                 style = TextStyle(
                     textDecoration = TextDecoration.Underline
                 ),
-                modifier = Modifier
-                    .clickable(onClick = onRegisterClick)
+                modifier = Modifier.clickable(onClick = onRegisterClick)
             )
         }
         Spacer(modifier = Modifier.height(48.dp))
@@ -379,8 +374,7 @@ fun HorizontalLayout(
                 Triple(loginState.email, KeyboardType.Email, LoginUiEvent::UpdateEmail),
                 Triple(loginState.password, KeyboardType.Password, LoginUiEvent::UpdatePassword),
             ).forEach { (value, keyboardType, event) ->
-                TextField(
-                    value = value,
+                TextField(value = value,
                     onValueChange = { loginViewModel.onEvent(event(it)) },
                     placeholder = {
                         Text(
@@ -400,16 +394,14 @@ fun HorizontalLayout(
                         keyboardType = keyboardType,
                         imeAction = if (keyboardType == KeyboardType.Password) ImeAction.Done else ImeAction.Next
                     ),
-                    keyboardActions = KeyboardActions(
-                        onDone = {
-                            if (keyboardType == KeyboardType.Password) {
-                                loginViewModel.onEvent(
-                                    LoginUiEvent.Login
-                                )
-                                keyboardController?.hide()
-                            }
+                    keyboardActions = KeyboardActions(onDone = {
+                        if (keyboardType == KeyboardType.Password) {
+                            loginViewModel.onEvent(
+                                LoginUiEvent.Login
+                            )
+                            keyboardController?.hide()
                         }
-                    ),
+                    }),
                     visualTransformation = if (keyboardType == KeyboardType.Password) PasswordVisualTransformation() else VisualTransformation.None,
                     modifier = Modifier
                         .fillMaxWidth()
@@ -424,8 +416,7 @@ fun HorizontalLayout(
                         focusedIndicatorColor = Color.Transparent,
                         unfocusedIndicatorColor = Color.Transparent,
                         disabledIndicatorColor = Color.Transparent,
-                    )
-                )
+                    ))
                 if (keyboardType == KeyboardType.Email) {
                     Spacer(modifier = Modifier.height(16.dp))
                 }
@@ -447,9 +438,11 @@ fun HorizontalLayout(
                         "Invalid email" -> {
                             stringResource(id = R.string.invalid_email)
                         }
+
                         "Invalid password" -> {
                             stringResource(id = R.string.invalid_password)
                         }
+
                         else -> {
                             loginState.error
                         }
@@ -478,8 +471,7 @@ fun HorizontalLayout(
         }
 
         Column(
-            modifier = Modifier
-                .padding(16.dp),
+            modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -514,25 +506,21 @@ fun HorizontalLayout(
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.facebook_logo),
+                    Image(painter = painterResource(id = R.drawable.facebook_logo),
                         contentDescription = stringResource(id = R.string.facebook_description),
                         modifier = Modifier
                             .size(width = 140.dp, height = 64.dp)
-                            .clickable { /* Handle Facebook register */ }
-                    )
+                            .clickable { /* Handle Facebook register */ })
                     Text("Facebook", color = Color(black))
                 }
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.google_logo),
+                    Image(painter = painterResource(id = R.drawable.google_logo),
                         contentDescription = stringResource(id = R.string.google_description),
                         modifier = Modifier
                             .size(width = 140.dp, height = 64.dp)
-                            .clickable { /* Handle Google register */ }
-                    )
+                            .clickable { /* Handle Google register */ })
                     Text("Google", color = Color(black))
                 }
             }
@@ -550,16 +538,14 @@ fun HorizontalLayout(
                     style = TextStyle(
                         textDecoration = TextDecoration.Underline
                     ),
-                    modifier = Modifier
-                        .clickable(onClick = onRegisterClick)
+                    modifier = Modifier.clickable(onClick = onRegisterClick)
                 )
             }
             Spacer(modifier = Modifier.height(32.dp))
             Image(
                 painter = painterResource(id = R.drawable.hiki_logo_without_text),
                 contentDescription = stringResource(id = R.string.logo_description),
-                modifier = Modifier
-                    .size(width = 68.dp, height = 25.dp)
+                modifier = Modifier.size(width = 68.dp, height = 25.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))

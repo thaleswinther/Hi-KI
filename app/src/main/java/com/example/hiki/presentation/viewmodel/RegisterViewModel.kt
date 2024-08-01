@@ -14,7 +14,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
+class RegisterViewModel @Inject constructor(private val userRepository: UserRepository) :
+    ViewModel() {
     private val _registerState = MutableStateFlow(RegisterState())
     val registerState = _registerState.asStateFlow()
 
@@ -23,12 +24,15 @@ class RegisterViewModel @Inject constructor(private val userRepository: UserRepo
             is RegisterUiEvent.UpdateEmail -> {
                 _registerState.update { it.clearError().copy(email = event.email) }
             }
+
             is RegisterUiEvent.UpdateUsername -> {
                 _registerState.update { it.clearError().copy(username = event.username) }
             }
+
             is RegisterUiEvent.UpdatePassword -> {
                 _registerState.update { it.clearError().copy(password = event.password) }
             }
+
             is RegisterUiEvent.Register -> {
                 register()
             }
@@ -50,9 +54,7 @@ class RegisterViewModel @Inject constructor(private val userRepository: UserRepo
                 _registerState.update { it.copy(error = "User already exists", isLoading = false) }
             } else {
                 val user = User(
-                    email = state.email,
-                    username = state.username,
-                    password = state.password
+                    email = state.email, username = state.username, password = state.password
                 )
                 userRepository.insert(user)
                 _registerState.update { it.copy(isRegistered = true, isLoading = false) }

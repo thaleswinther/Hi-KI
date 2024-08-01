@@ -31,7 +31,8 @@ import com.example.hiki.navigation.ScreenDestinations
 @Composable
 fun OnBoardingScreenOne(
     navController: NavController,
-    onBackPress: () -> Unit) {
+    onBackPress: () -> Unit
+) {
 
     BackHandler {
         onBackPress()

@@ -23,11 +23,13 @@ class ChatViewModel : ViewModel() {
                     getResponse(event.prompt)
                 }
             }
+
             is ChatUiEvent.UpdatePrompt -> {
                 _chatState.update {
                     it.copy(prompt = event.newPrompt)
                 }
             }
+
             is ChatUiEvent.ShowIndicator -> {
                 showIndicator()
             }

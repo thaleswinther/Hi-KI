@@ -172,7 +172,7 @@ fun ChatScreen(
                         focusManager.clearFocus()
                     },
                 imageVector = Icons.AutoMirrored.Rounded.Send,
-                contentDescription = stringResource(id =R.string.send_prompt),
+                contentDescription = stringResource(id = R.string.send_prompt),
                 tint = Color(white),
             )
         }
@@ -230,7 +230,7 @@ fun TopBar(onBackPress: () -> Unit) {
             modifier = Modifier.fillMaxWidth()
         ) {
             Row {
-                IconButton(onClick = {  onBackPress() }) {
+                IconButton(onClick = { onBackPress() }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_arrow_back),
                         tint = Color(white),
@@ -243,9 +243,9 @@ fun TopBar(onBackPress: () -> Unit) {
                     contentDescription = stringResource(id = R.string.user_avatar),
                     modifier = Modifier.size(48.dp)
                 )
-                Column (
+                Column(
                     modifier = Modifier.padding(start = 8.dp)
-                ){
+                ) {
                     Text(
                         text = "Ana",
                         color = Color(black),

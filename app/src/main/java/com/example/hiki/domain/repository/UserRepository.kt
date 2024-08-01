@@ -3,7 +3,7 @@ package com.example.hiki.domain.repository
 import com.example.hiki.domain.model.dao.UserDao
 import com.example.hiki.domain.model.entity.User
 
-class UserRepository (private val userDao: UserDao){
+class UserRepository(private val userDao: UserDao) {
     suspend fun insert(user: User) {
         userDao.insert(user)
     }

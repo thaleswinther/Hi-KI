@@ -33,7 +33,8 @@ import com.example.hiki.theme.white
 @Composable
 fun OnBoardingScreenTwo(
     navController: NavController,
-    onBackPress: () -> Unit) {
+    onBackPress: () -> Unit
+) {
 
     BackHandler {
         onBackPress()

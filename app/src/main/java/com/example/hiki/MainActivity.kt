@@ -23,6 +23,7 @@ class MainActivity : ComponentActivity() {
     companion object {
         private val Tag = MainActivity::class.java.simpleName
     }
+
     private val uriState = MutableStateFlow("")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

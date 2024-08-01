@@ -92,7 +92,6 @@ fun RegisterScreen(
 }
 
 
-
 @Composable
 fun VerticalLayout(
     registerState: RegisterState,
@@ -152,9 +151,11 @@ fun VerticalLayout(
                     imeAction = if (keyboardType == KeyboardType.Password) ImeAction.Done else ImeAction.Next
                 ),
                 keyboardActions = KeyboardActions(
-                    onDone = { if (keyboardType == KeyboardType.Password)
-                        registerViewModel.onEvent(RegisterUiEvent.Register)
-                        keyboardController?.hide() }
+                    onDone = {
+                        if (keyboardType == KeyboardType.Password)
+                            registerViewModel.onEvent(RegisterUiEvent.Register)
+                        keyboardController?.hide()
+                    }
                 ),
                 visualTransformation = if (keyboardType == KeyboardType.Password) PasswordVisualTransformation() else VisualTransformation.None,
                 modifier = Modifier
@@ -184,9 +185,11 @@ fun VerticalLayout(
                     "All fields are required" -> {
                         stringResource(id = R.string.all_fields_required)
                     }
+
                     "User already exists" -> {
                         stringResource(id = R.string.user_already_exists)
                     }
+
                     else -> {
                         registerState.error
                     }
@@ -271,9 +274,9 @@ fun VerticalLayout(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        Row (
+        Row(
             verticalAlignment = Alignment.CenterVertically,
-        ){
+        ) {
             Text(stringResource(R.string.login_account), color = Color(black))
             Spacer(modifier = Modifier.width(4.dp))
             Text(
@@ -316,7 +319,7 @@ fun HorizontalLayout(
     onLoginClick: () -> Unit,
     keyboardController: SoftwareKeyboardController?
 ) {
-    Row (
+    Row(
         modifier = Modifier
             .background(Color(white))
             .imePadding()
@@ -325,7 +328,7 @@ fun HorizontalLayout(
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Column (
+        Column(
             modifier = Modifier
                 .weight(1f)
                 .padding(16.dp),
@@ -349,7 +352,11 @@ fun HorizontalLayout(
             listOf(
                 Triple(registerState.email, KeyboardType.Email, RegisterUiEvent::UpdateEmail),
                 Triple(registerState.username, KeyboardType.Text, RegisterUiEvent::UpdateUsername),
-                Triple(registerState.password, KeyboardType.Password, RegisterUiEvent::UpdatePassword)
+                Triple(
+                    registerState.password,
+                    KeyboardType.Password,
+                    RegisterUiEvent::UpdatePassword
+                )
             ).forEach { (value, keyboardType, event) ->
                 TextField(
                     value = value,
@@ -373,9 +380,11 @@ fun HorizontalLayout(
                         imeAction = if (keyboardType == KeyboardType.Password) ImeAction.Done else ImeAction.Next
                     ),
                     keyboardActions = KeyboardActions(
-                        onDone = { if (keyboardType == KeyboardType.Password)
-                            registerViewModel.onEvent(RegisterUiEvent.Register)
-                            keyboardController?.hide() }
+                        onDone = {
+                            if (keyboardType == KeyboardType.Password)
+                                registerViewModel.onEvent(RegisterUiEvent.Register)
+                            keyboardController?.hide()
+                        }
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -400,9 +409,11 @@ fun HorizontalLayout(
                         "All fields are required" -> {
                             stringResource(id = R.string.all_fields_required)
                         }
+
                         "User already exists" -> {
                             stringResource(id = R.string.user_already_exists)
                         }
+
                         else -> {
                             registerState.error
                         }
@@ -455,7 +466,7 @@ fun HorizontalLayout(
         }
 
 
-        Column (
+        Column(
             modifier = Modifier
                 .weight(1f)
                 .padding(16.dp),
@@ -483,7 +494,11 @@ fun HorizontalLayout(
                             .size(width = 140.dp, height = 64.dp)
                             .clickable { /* Handle Facebook register */ }
                     )
-                    Text("Facebook", color = Color(black), fontSize = MaterialTheme.typography.bodySmall.fontSize)
+                    Text(
+                        "Facebook",
+                        color = Color(black),
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize
+                    )
                 }
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -495,16 +510,24 @@ fun HorizontalLayout(
                             .size(width = 140.dp, height = 64.dp)
                             .clickable { /* Handle Google register */ }
                     )
-                    Text("Google", color = Color(black), fontSize = MaterialTheme.typography.bodySmall.fontSize)
+                    Text(
+                        "Google",
+                        color = Color(black),
+                        fontSize = MaterialTheme.typography.bodySmall.fontSize
+                    )
                 }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            Row (
+            Row(
                 verticalAlignment = Alignment.CenterVertically,
-            ){
-                Text(stringResource(R.string.login_account), color = Color(black), fontSize = MaterialTheme.typography.bodySmall.fontSize)
+            ) {
+                Text(
+                    stringResource(R.string.login_account),
+                    color = Color(black),
+                    fontSize = MaterialTheme.typography.bodySmall.fontSize
+                )
                 Spacer(modifier = Modifier.width(4.dp))
                 Text(
                     text = stringResource(R.string.click_here),

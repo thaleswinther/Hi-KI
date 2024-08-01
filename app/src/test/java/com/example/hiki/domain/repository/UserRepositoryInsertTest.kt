@@ -15,7 +15,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [29], manifest=Config.NONE)
+@Config(sdk = [29], manifest = Config.NONE)
 class UserRepositoryInsertTest {
 
     private lateinit var database: HikiDataBase

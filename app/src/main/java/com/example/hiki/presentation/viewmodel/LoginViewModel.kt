@@ -22,9 +22,11 @@ class LoginViewModel @Inject constructor(private val userRepository: UserReposit
             is LoginUiEvent.UpdateEmail -> {
                 _loginState.update { it.clearError().copy(email = event.email) }
             }
+
             is LoginUiEvent.UpdatePassword -> {
                 _loginState.update { it.clearError().copy(password = event.password) }
             }
+
             is LoginUiEvent.Login -> {
                 login()
             }
