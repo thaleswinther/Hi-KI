@@ -22,15 +22,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.hiki.R
 import com.example.hiki.navigation.ScreenDestinations
 
 @Composable
-fun OnBoardingScreenOne(navController: NavController) {
+fun OnBoardingScreenOne(
+    navController: NavController,
+    onBackPress: () -> Unit) {
     BoxWithConstraints(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -173,8 +173,3 @@ fun HorizontalLayout(navController: NavController) {
     }
 }
 
-@Preview
-@Composable
-fun OnBoardingScreenOnePreview() {
-    OnBoardingScreenOne(navController = rememberNavController())
-}

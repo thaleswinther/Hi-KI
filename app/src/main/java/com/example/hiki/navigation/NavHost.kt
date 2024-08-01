@@ -48,7 +48,12 @@ fun MainAnimationNavHost(
             )
         }
         screen(ScreenDestinations.OnBoardingScreenOne.route) {
-            OnBoardingScreenOne(navController = navController)
+            OnBoardingScreenOne(
+                onBackPress = {
+                    navController.navigateTo(ScreenDestinations.LoginScreen.route)
+                },
+                navController = navController
+            )
         }
         screen(ScreenDestinations.OnBoardingScreenTwo.route) {
             OnBoardingScreenTwo(navController = navController)
@@ -59,7 +64,7 @@ fun MainAnimationNavHost(
         screen(ScreenDestinations.ChatScreen.route) {
             ChatScreen(
                 onBackPress = {
-                    navController.navigateTo(ScreenDestinations.OnBoardingScreenOne.route)
+                    navController.navigateTo(ScreenDestinations.LoginScreen.route)
                 },
                 uriState = uriState,
             )
