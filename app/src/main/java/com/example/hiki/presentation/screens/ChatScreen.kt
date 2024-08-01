@@ -252,7 +252,7 @@ fun TopBar(onBackPress: () -> Unit) {
                         fontSize = 20.sp
                     )
                     Text(
-                        text = "Trabalho",
+                        text = stringResource(id = R.string.work),
                         color = Color(black),
                         fontSize = 14.sp
                     )
