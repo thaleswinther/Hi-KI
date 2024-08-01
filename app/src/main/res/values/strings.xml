@@ -30,4 +30,8 @@
     <string name="facebook_description">Logo do FacebookI</string>
     <string name="google_description">Logo da Google</string>
     <string name="step_one_description">Passo 1</string>
+
+    <string name="step_two_description">Passo 2</string>
+    <string name="welcome_message_two">Converse sobre qualquer tema e com vocabulário adaptado ao seu nível de compreensão</string>
+
 </resources>

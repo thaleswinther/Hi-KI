@@ -1,5 +1,6 @@
 package com.example.hiki.presentation.screens
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -31,6 +32,11 @@ import com.example.hiki.navigation.ScreenDestinations
 fun OnBoardingScreenOne(
     navController: NavController,
     onBackPress: () -> Unit) {
+
+    BackHandler {
+        onBackPress()
+    }
+
     BoxWithConstraints(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -91,8 +97,8 @@ fun VerticalLayout(navController: NavController) {
         modifier = Modifier
             .size(width = 128.dp, height = 40.dp),
         onClick = {
-            navController.navigate(ScreenDestinations.ChatScreen.route) {
-                popUpTo(ScreenDestinations.OnBoardingScreenOne.route) {
+            navController.navigate(ScreenDestinations.OnBoardingScreenTwo.route) {
+                popUpTo(ScreenDestinations.LoginScreen.route) {
                     inclusive = false
                 }
             }
@@ -148,8 +154,8 @@ fun HorizontalLayout(navController: NavController) {
             modifier = Modifier
                 .size(width = 128.dp, height = 40.dp),
             onClick = {
-                navController.navigate(ScreenDestinations.ChatScreen.route) {
-                    popUpTo(ScreenDestinations.OnBoardingScreenOne.route) {
+                navController.navigate(ScreenDestinations.OnBoardingScreenTwo.route) {
+                    popUpTo(ScreenDestinations.LoginScreen.route) {
                         inclusive = false
                     }
                 }
@@ -172,4 +178,3 @@ fun HorizontalLayout(navController: NavController) {
         )
     }
 }
-
