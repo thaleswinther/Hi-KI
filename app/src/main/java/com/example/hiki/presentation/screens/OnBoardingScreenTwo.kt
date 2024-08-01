@@ -99,7 +99,7 @@ fun VerticalLayoutTwo(navController: NavController) {
         modifier = Modifier
             .size(width = 128.dp, height = 40.dp),
         onClick = {
-            navController.navigate(ScreenDestinations.ChatScreen.route) {
+            navController.navigate(ScreenDestinations.OnBoardingScreenThree.route) {
                 popUpTo(ScreenDestinations.OnBoardingScreenOne.route) {
                     inclusive = false
                 }
@@ -156,7 +156,7 @@ fun HorizontalLayoutTwo(navController: NavController) {
             modifier = Modifier
                 .size(width = 128.dp, height = 40.dp),
             onClick = {
-                navController.navigate(ScreenDestinations.ChatScreen.route) {
+                navController.navigate(ScreenDestinations.OnBoardingScreenThree.route) {
                     popUpTo(ScreenDestinations.OnBoardingScreenOne.route) {
                         inclusive = false
                     }
